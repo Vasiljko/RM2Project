@@ -18,14 +18,9 @@ public class GridBase extends Panel{
 		{
 			for(int j = 0; j < cols;j++)
 			{
-				graphs[i][j] = new Graph(new ArrayList<Double>());
+				graphs[i][j] = new Graph(new ArrayList<Double>(), "sad");
 				graphs[i][j].showGui();
 				this.add(graphs[i][j]);
-				//g[i][j] = new Graph(values[i][j]);
-				//this.add(new Graph(values[i][j]));
-				//g[i][j].createAndShowGui();
-				//System.out.println(i+" "+j);
-				//this.add(new TravnataPovrs());
 			}
 		}
 	}

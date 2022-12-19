@@ -26,17 +26,18 @@ public class Graph extends JPanel{
     private int heigth = 200;
     private int padding = 25;
     private int labelPadding = 25;
-    private Color lineColor = new Color(44, 102, 230, 180);
+    private Color lineColor = new Color(44, 102, 180, 180);
     private Color pointColor = new Color(100, 100, 100, 180);
     private Color gridColor = new Color(200, 200, 200, 200);
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f);
     private int pointWidth = 4;
     private int numberYDivisions = 10;
     public List<Double> scores;
-
-    public Graph(List<Double> scores) {
+    public String header;
+    
+    public Graph(List<Double> scores, String h) {
         this.scores = scores;
-
+        this.header = h;
     }
 
     @Override
@@ -167,7 +168,7 @@ public class Graph extends JPanel{
             scores.add((double) random.nextDouble() * maxScore);
             // scores.add((double) i);
         }*/
-        MainPanel mainPanel = new MainPanel(scores);
+        MainPanel mainPanel = new MainPanel(scores, header);
         mainPanel.setPreferredSize(new Dimension(800, 600));
         JFrame frame = new JFrame("DrawGraph");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,10 +192,12 @@ public class Graph extends JPanel{
     	showGui();
     }*/
     
+    private int lineFilter = 0;
     public void addData(Double d) {
     	SwingUtilities.invokeLater(new Runnable() {
     	    public void run() {
     	        scores.add(d);
+    	        
     	        revalidate();
     	}});
     }
@@ -204,7 +207,7 @@ public class Graph extends JPanel{
     	p.add(1.0);
     	p.add(2.0);
     	p.add(3.0);
-    	Graph g = new Graph(p);
+    	Graph g = new Graph(p, "sadasd");
     	g.createAndShowGui();
     
     	while(true) {
@@ -230,15 +233,15 @@ public class Graph extends JPanel{
     	public HorizontalPanel horizontalPanel;
     	public JPanel graph;
     	
-        public MainPanel(List<Double> scores) {
+        public MainPanel(List<Double> scores, String header) {
 
             setLayout(new BorderLayout());
 
-            JLabel title = new JLabel("Variation of Distance with time");
+            JLabel title = new JLabel(header);
             title.setFont(new Font("Arial", Font.BOLD, 25));
             title.setHorizontalAlignment(JLabel.CENTER);
 
-            graph = new Graph(scores);
+            graph = new Graph(scores, header);
 
             verticalPanel = new VerticalPanel();
 
@@ -267,7 +270,7 @@ public class Graph extends JPanel{
 
                 Font font = new Font("Arial", Font.PLAIN, 15);
 
-                String string = "Time (s)";
+                String string = "Difference";
 
                 FontMetrics metrics = g.getFontMetrics(font);
                 int width = metrics.stringWidth(string);
@@ -304,7 +307,7 @@ public class Graph extends JPanel{
 
                 Font font = new Font("Arial", Font.PLAIN, 15);
 
-                String string = "Distance (m)";
+                String string = "Tick";
 
                 FontMetrics metrics = g.getFontMetrics(font);
                 int width = metrics.stringWidth(string);

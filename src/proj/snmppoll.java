@@ -29,6 +29,10 @@ public abstract class snmppoll extends snmp
     	_poller.removeListener(listener);
     }
     
+    static public void setInterval(int interval) {
+    	_interval = interval;
+    }
+    
     public void doIt()
     {
     	if(_host == null) {
@@ -64,7 +68,8 @@ public abstract class snmppoll extends snmp
 			    	for(int i=0;i<7;i++) {
 		    			if(prev_keys == null)continue;
 		    			Project.graphs[i].addData(Double.parseDouble(keys.get(i))-Integer.parseInt(prev_keys.get(i)));
-			    		System.out.println(Double.parseDouble(keys.get(i))-Integer.parseInt(prev_keys.get(i)));
+		    			int prev_value = (prev_keys == null) ? 0 : Integer.parseInt(prev_keys.get(i));
+			    		System.out.println(Double.parseDouble(keys.get(i))-prev_value);
 			    	}
 			    	System.out.println();
 				}

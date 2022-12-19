@@ -6,37 +6,49 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Project extends JFrame{
 	private ProjectBase projectBase = new ProjectBase();
 	private static int numberOfGraphs = 7;
 	public static Graph[] graphs = new Graph[numberOfGraphs];
+	
+	private void addGraph(int i, String h) {
+		List<Double> p = new ArrayList<Double>();
+		p.add(0.0);
+		p.add(0.0);
+    	graphs[i] = new Graph(p, h);
+    	graphs[i].showGui();
+	}
+	
 	private void populateWindow()
 	{
-		//plac = new Plac(redovi, kolone);
-		//gridBase = new GridBase(1, 1, projectBase.changes);
-		/*List<Double> p = new ArrayList<Double>();
-    	p.add(1.0);
-    	p.add(2.0);
-    	p.add(3.0);
-    	Graph g = new Graph(p);
-    	g.showGui();
-    	*/
-		/*setBounds(700, 200, 1500, 1000);
-		setResizable(false);
-		setTitle("Energetski sistem");
+		/*public class OptionPaneExample {  
+			JFrame f;  
+			OptionPaneExample(){  
+			    f=new JFrame();   
+			    String name=JOptionPane.showInputDialog(f,"Enter Name");      
+			}  
+			public static void main(String[] args) {  
+			    new OptionPaneExample();  
+			}  
+			}  */
+		JFrame f = new JFrame();
+		Integer interval = Integer.parseInt(JOptionPane.showInputDialog(f, "Enter value"));
+		projectBase.setInterval(interval);
 		
-		add(gridBase, BorderLayout.CENTER);*/
-		for(int i=0;i<numberOfGraphs;i++) {
+    	addGraph(0,"cpmCPUTotal5sec");
+    	addGraph(1,"cpmCPUTotal1min");
+    	addGraph(2,"cpmCPUTotal5min");
 
-			List<Double> p = new ArrayList<Double>();
-			p.add(0.0);
-			p.add(0.0);
-	    	graphs[i] = new Graph(p);
-	    	graphs[i].showGui();
+    	addGraph(3,"ciscoMemoryPoolUsed.1");
+    	addGraph(4,"ciscoMemoryPoolUsed.2");
+    	addGraph(5,"ciscoMemoryPoolFree.1");
+    	addGraph(6,"ciscoMemoryPoolFree.2");
 
-		}
 		
 		/*while(true) {
     		try {
