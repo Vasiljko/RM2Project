@@ -70,6 +70,7 @@ public abstract class snmppoll extends snmp
 		    			Project.graphs[i].addData(Double.parseDouble(keys.get(i))-Integer.parseInt(prev_keys.get(i)));
 		    			int prev_value = (prev_keys == null) ? 0 : Integer.parseInt(prev_keys.get(i));
 			    		System.out.println(Double.parseDouble(keys.get(i))-prev_value);
+			    		Project.graphs[i].repaint();
 			    	}
 			    	System.out.println();
 				}

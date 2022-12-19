@@ -56,12 +56,17 @@ public class ProjectBase extends snmppoll implements Runnable{
 	}
 	
 	void printKeys() {
-		for(Object o : prev_keys) {
-			System.out.println(o);
+		if(prev_keys != null) {
+			for(Object o : prev_keys) {
+				System.out.println(o);
+			}
 		}
-		for(Object o : keys) {
-			System.out.println(o);
+		if(keys != null) {
+			for(Object o : keys) {
+				System.out.println(o);
+			}
 		}
+		
 	}
 	
 	public static void main(String[] args) {

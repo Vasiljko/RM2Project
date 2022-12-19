@@ -170,7 +170,7 @@ public class Graph extends JPanel{
         }*/
         MainPanel mainPanel = new MainPanel(scores, header);
         mainPanel.setPreferredSize(new Dimension(800, 600));
-        JFrame frame = new JFrame("DrawGraph");
+        JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(mainPanel);
         frame.pack();

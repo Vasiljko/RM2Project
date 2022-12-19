@@ -1,6 +1,8 @@
 package proj;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +51,19 @@ public class Project extends JFrame{
     	addGraph(5,"ciscoMemoryPoolFree.1");
     	addGraph(6,"ciscoMemoryPoolFree.2");
 
+		setLayout(new BorderLayout());
+		add(graphs[0], BorderLayout.CENTER);
+		add(graphs[1], BorderLayout.CENTER);
+		add(graphs[2], BorderLayout.CENTER);
+		add(graphs[3], BorderLayout.CENTER);
+		add(graphs[4], BorderLayout.CENTER);
+		add(graphs[5], BorderLayout.CENTER);
+		add(graphs[6], BorderLayout.CENTER);
+		getContentPane().setBackground(new Color(70,80,70));
+		setVisible(true);
 		
 		/*while(true) {
+		 * 
     		try {
         		Thread.sleep(4000);
         	}catch(Exception e) {
