@@ -41,7 +41,7 @@ public class ProjectBase extends snmppoll implements Runnable{
 	public void run() {
 		while(true) {
 			System.out.println("??");
-			doIt(_host, _port, _community, _version);
+			doIt();
 			System.out.println("proso");
 			try{
 				Thread.sleep(10000);
@@ -52,10 +52,6 @@ public class ProjectBase extends snmppoll implements Runnable{
 			printKeys();
 			System.out.println();
 			removeListener();
-			System.out.println("Input new host");
-			String str= (new Scanner(System.in)).nextLine(); 
-			System.out.print("You have entered: "+str);
-			setHost(str);
 		}
 	}
 	

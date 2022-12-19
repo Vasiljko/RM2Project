@@ -24,17 +24,20 @@ public abstract class snmppoll extends snmp
     protected ArrayList<String> keys = null;
     protected ArrayList<String> prev_keys = null;
     protected ArrayList<Object> values = null;
-        
+    
     public void removeListener() {
     	_poller.removeListener(listener);
     }
     
-    public void doIt(String hostName, int port, String communityValue, int version)
+    public void doIt()
     {
-    	System.out.println(hostName +" "+ port+" "+ communityValue+" "+ version);
+    	if(_host == null) {
+    		System.out.println("Host is null");
+    		return;
+    	}
         try
         {
-            SnmpSession session = new SnmpSession(hostName, port, communityValue, communityValue, version);
+            SnmpSession session = new SnmpSession(_host, _port, _community, _community, _version);
             if(_isSnmpV3)
             {
                 session.setV3Params(_user, _authProtocol, _authPassword, _privProtocol, _privPassword, _context, null);
@@ -44,7 +47,7 @@ public abstract class snmppoll extends snmp
             listener = new Listener() {
 				@Override
 				public void handleMsg(Object sender, Msg msg) {
-
+					//System.out.println(sender+"\n"+msg);
 			    	prev_keys = keys;
 					if (msg.getType() != Msg.ERROR_TYPE) {
 						SnmpPdu pdu = (SnmpPdu)msg;	
@@ -55,10 +58,15 @@ public abstract class snmppoll extends snmp
 							keys.add(binds[j].getValue().toString());
 						}
 					}
-			    	System.out.println(sender);
-			    	for(Object o : keys) {
-			    		System.out.println(o);
+			    	//System.out.println(sender);
+			    	System.out.println("--------- SIZE IS "+keys.size());
+			    	
+			    	for(int i=0;i<7;i++) {
+		    			if(prev_keys == null)continue;
+		    			Project.graphs[i].addData(Double.parseDouble(keys.get(i))-Integer.parseInt(prev_keys.get(i)));
+			    		System.out.println(Double.parseDouble(keys.get(i))-Integer.parseInt(prev_keys.get(i)));
 			    	}
+			    	System.out.println();
 				}
 			};
 			_poller.addListener(listener);

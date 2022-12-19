@@ -37,8 +37,8 @@ public abstract class snmp
     		"cpmCPUTotal5sec",
     		"cpmCPUTotal1min",
     		"cpmCPUTotal5min",
-    		"ciscoMemoryPoolName.1",
-    		"ciscoMemoryPoolName.2",
+    		//"ciscoMemoryPoolName.1",
+    		//"ciscoMemoryPoolName.2",
     		"ciscoMemoryPoolUsed.1",
     		"ciscoMemoryPoolUsed.2",
     		"ciscoMemoryPoolFree.1",
@@ -48,8 +48,8 @@ public abstract class snmp
     		".1.3.6.1.4.1.9.9.109.1.1.1.1.3.1", //cpmCPUTotal5sec
     		".1.3.6.1.4.1.9.9.109.1.1.1.1.4.1", //cpmCPUTotal1min
     		".1.3.6.1.4.1.9.9.109.1.1.1.1.5.1", //cpmCPUTotal5min
-    		".1.3.6.1.4.1.9.9.48.1.1.1.2.1", //ciscoMemoryPoolName
-    		".1.3.6.1.4.1.9.9.48.1.1.1.2.2",
+    		//".1.3.6.1.4.1.9.9.48.1.1.1.2.1", //ciscoMemoryPoolName
+    		//".1.3.6.1.4.1.9.9.48.1.1.1.2.2",
     		//".1.3.6.1.4.1.9.9.48.1.1.1.3.1", //ciscoMemoryPoolValid
     		//".1.3.6.1.4.1.9.9.48.1.1.1.3.2",
     		".1.3.6.1.4.1.9.9.48.1.1.1.5.1", //ciscoMemoryPoolUsed 
